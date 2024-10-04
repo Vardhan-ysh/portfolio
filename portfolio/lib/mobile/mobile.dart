@@ -11,7 +11,7 @@ class MobileView extends StatelessWidget {
       ),
       body: const Center(
         child: Text(
-          'This is the mobile view placeholder',
+          'Need to implement mobile view 😒',
           style: TextStyle(fontSize: 24),
         ),
       ),
