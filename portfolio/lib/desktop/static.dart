@@ -21,7 +21,7 @@ class StaticSection extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const SizedBox(height: 68),
+            const SizedBox(height: 124),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
