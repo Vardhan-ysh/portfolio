@@ -40,6 +40,7 @@ dependencies:
   url_launcher: ^6.3.0
   flutter_native_splash: ^2.4.1
   flutter_launcher_icons: ^0.14.1
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
@@ -74,6 +75,8 @@ flutter:
     - assets/kiosk_app.png
     - assets/expense_tracker.png
     - assets/chefs_recipes.png
+    - assets/loading.png
+    - assets/splash.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -103,7 +106,7 @@ flutter:
 
 flutter_native_splash:
   color: "#000000"
-  image: assets/yashvardhan.jpg
+  image: assets/splash.gif
   web: true
   android: true
 
