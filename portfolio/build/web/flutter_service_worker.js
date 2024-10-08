@@ -38,7 +38,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "5ac6954baf593f220aee2922921b683c
 "canvaskit/skwasm.worker.js": "89990e8c92bcb123999aa81f7e203b1c",
 "favicon.png": "6fda0158fac14474e08e1dfc26318887",
 "flutter.js": "f393d3c16b631f36852323de8e583132",
-"flutter_bootstrap.js": "e4c22136dfb3a80e442792a2193ac37c",
+"flutter_bootstrap.js": "bfc7fddb464c161ffed61c32977a4de8",
 "icons/android-chrome-192x192.png": "6fda0158fac14474e08e1dfc26318887",
 "icons/android-chrome-512x512.png": "3d610953302034afe012f4c3153af986",
 "icons/apple-touch-icon.png": "134a82652cfae9248a35e0e3247cfebe",
