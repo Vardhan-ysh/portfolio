@@ -88,340 +88,342 @@ class _MobileViewState extends State<MobileView> {
         achievementsKey: _certificatesKey,
         certificatesKey: _certificatesKey,
       ),
-      // body: SingleChildScrollView(
-      // controller: _scrollController,
       body: ListView(
         controller: _scrollController,
         children: [
           About(aboutKey: _aboutKey),
           const SizedBox(height: 36),
-          Container(
-            padding: const EdgeInsets.all(16),
-            key: _experienceKey,
-            // color: Colors.blue,
-            child: Center(
-              child: Column(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Experience",
-                      style: GoogleFonts.montserrat(
-                        fontSize: 32,
-                        color: primaryColor,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  for (var experience in experiences)
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(top: 7),
-                          width: 2,
-                          height: 46,
-                          color: Colors.white.withOpacity(0.2),
-                        ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                experience['title']!,
-                                style: GoogleFonts.montserrat(
-                                  fontSize: 20,
-                                  color: Colors.white.withOpacity(0.8),
-                                ),
-                              ),
-                              // const SizedBox(height: 2),
-                              Row(
-                                children: [
-                                  TextButton(
-                                    onPressed: () {
-                                      launchUrlString(
-                                          experience['company_link']!);
-                                    },
-                                    child: Text(
-                                      experience['company']!,
-                                      style: GoogleFonts.montserrat(
-                                        fontSize: 16,
-                                        color: secondaryColor,
-                                      ),
-                                    ),
-                                  ),
-                                  const Spacer(),
-                                  if (MediaQuery.of(context).size.width > 370)
-                                    Text(
-                                      experience['duration']!,
-                                      style: GoogleFonts.montserrat(
-                                        fontSize: 16,
-                                        color: Colors.white.withOpacity(0.6),
-                                      ),
-                                    ),
-                                ],
-                              ),
-                              const SizedBox(height: 12),
-                              Text(
-                                experience['description']!,
-                                style: GoogleFonts.montserrat(
-                                  fontSize: 16,
-                                  color: Colors.white.withOpacity(0.6),
-                                ),
-                              ),
-                              const SizedBox(height: 18),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                ],
+          _buildExperienceSection(),
+          _buildProjectsSection(),
+          _buildCertificatesSection(),
+          const SizedBox(height: 36),
+          _buildEducationSection(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildExperienceSection() {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      key: _experienceKey,
+      child: Center(
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Experience",
+                style: GoogleFonts.montserrat(
+                  fontSize: 32,
+                  color: primaryColor,
+                ),
               ),
             ),
-          ),
-          Container(
-            key: _projectsKey,
-            padding: const EdgeInsets.all(16),
-            // height: 400,
-            // color: Colors.green,
-            child: Column(
-              children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Projects",
-                    style: GoogleFonts.montserrat(
-                      fontSize: 32,
-                      color: primaryColor,
-                    ),
+            const SizedBox(height: 16),
+            for (var experience in experiences)
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 7),
+                    width: 2,
+                    height: 46,
+                    color: Colors.white.withOpacity(0.2),
                   ),
-                ),
-                const SizedBox(height: 16),
-                for (var project in projects)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 24),
+                  const SizedBox(width: 16),
+                  Expanded(
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Text(
+                          experience['title']!,
+                          style: GoogleFonts.montserrat(
+                            fontSize: 20,
+                            color: Colors.white.withOpacity(0.8),
+                          ),
+                        ),
                         Row(
                           children: [
-                            Container(
-                              margin: const EdgeInsets.only(top: 3),
-                              width: 2,
-                              height: 20,
-                              color: Colors.white.withOpacity(0.2),
-                            ),
-                            const SizedBox(width: 16),
-                            Text(
-                              project['title']!,
-                              style: GoogleFonts.montserrat(
-                                fontSize: 20,
-                                color: Colors.white.withOpacity(0.8),
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            if (project['link'] != null &&
-                                MediaQuery.of(context).size.width > 390)
-                              Container(
-                                margin: const EdgeInsets.only(top: 3),
-                                width: 2,
-                                height: 20,
-                                color: Colors.white.withOpacity(0.2),
-                              ),
-                            if (project['link'] != null &&
-                                MediaQuery.of(context).size.width > 390)
-                              TextButton(
-                                onPressed: () {
-                                  launchUrlString(project['link']!);
-                                },
-                                child: Text(
-                                  "View Project",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 16,
-                                    color: secondaryColor,
-                                  ),
-                                ),
-                              ),
-                          ],
-                        ),
-                        if (project['link'] != null &&
-                            MediaQuery.of(context).size.width < 390)
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: TextButton(
+                            TextButton(
                               onPressed: () {
-                                launchUrlString(project['link']!);
+                                launchUrlString(experience['company_link']!);
                               },
                               child: Text(
-                                "  View Project",
+                                experience['company']!,
                                 style: GoogleFonts.montserrat(
                                   fontSize: 16,
                                   color: secondaryColor,
                                 ),
                               ),
                             ),
-                          ),
-                        const SizedBox(height: 8),
-                        Row(
-                          children: [
-                            if (MediaQuery.of(context).size.width > 1100)
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.1),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Image.asset(
-                                  project['image']!,
-                                  width: projectImageWidth,
-                                  height: projectImageHeight,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: Text(
-                                project['description']!,
+                            const Spacer(),
+                            if (MediaQuery.of(context).size.width > 370)
+                              Text(
+                                experience['duration']!,
                                 style: GoogleFonts.montserrat(
                                   fontSize: 16,
                                   color: Colors.white.withOpacity(0.6),
                                 ),
                               ),
-                            ),
                           ],
                         ),
-                      ],
-                    ),
-                  ),
-              ],
-            ),
-          ),
-          Container(
-            key: _certificatesKey,
-            // height: 400,
-            padding: const EdgeInsets.all(16),
-            // color: Colors.purple,
-            child: Column(
-              children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Achievements & Certificates",
-                    style: GoogleFonts.montserrat(
-                      fontSize: 32,
-                      color: primaryColor,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                for (var achievement in achievementsAndCertificates)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 24),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(top: 3),
-                              width: 2,
-                              height: 20,
-                              color: Colors.white.withOpacity(0.2),
-                            ),
-                            const SizedBox(width: 16),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.6,
-                              child: Text(
-                                achievement['title']!,
-                                style: GoogleFonts.montserrat(
-                                  fontSize: 20,
-                                  color: Colors.white.withOpacity(0.8),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            if (achievement['link'] != null)
-                              Container(
-                                margin: const EdgeInsets.only(top: 3),
-                                width: 2,
-                                height: 20,
-                                color: Colors.white.withOpacity(0.2),
-                              ),
-                            if (achievement['link'] != null)
-                              TextButton(
-                                onPressed: () {
-                                  launchUrlString(achievement['link']!);
-                                },
-                                child: Text(
-                                  "View",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 16,
-                                    color: secondaryColor,
-                                  ),
-                                ),
-                              ),
-                          ],
-                        ),
-                        const SizedBox(height: 8),
+                        const SizedBox(height: 12),
                         Text(
-                          achievement['description']!,
+                          experience['description']!,
                           style: GoogleFonts.montserrat(
                             fontSize: 16,
                             color: Colors.white.withOpacity(0.6),
                           ),
                         ),
+                        const SizedBox(height: 18),
                       ],
                     ),
                   ),
-              ],
+                ],
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildProjectsSection() {
+    return Container(
+      key: _projectsKey,
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Projects",
+              style: GoogleFonts.montserrat(
+                fontSize: 32,
+                color: primaryColor,
+              ),
             ),
           ),
-          const SizedBox(height: 36),
-          Container(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+          const SizedBox(height: 16),
+          for (var project in projects)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 24),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(top: 3),
+                        width: 2,
+                        height: 20,
+                        color: Colors.white.withOpacity(0.2),
+                      ),
+                      const SizedBox(width: 16),
+                      Text(
+                        project['title']!,
+                        style: GoogleFonts.montserrat(
+                          fontSize: 20,
+                          color: Colors.white.withOpacity(0.8),
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      if (project['link'] != null &&
+                          MediaQuery.of(context).size.width > 390)
+                        Container(
+                          margin: const EdgeInsets.only(top: 3),
+                          width: 2,
+                          height: 20,
+                          color: Colors.white.withOpacity(0.2),
+                        ),
+                      if (project['link'] != null &&
+                          MediaQuery.of(context).size.width > 390)
+                        TextButton(
+                          onPressed: () {
+                            launchUrlString(project['link']!);
+                          },
+                          child: Text(
+                            "View Project",
+                            style: GoogleFonts.montserrat(
+                              fontSize: 16,
+                              color: secondaryColor,
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                  if (project['link'] != null &&
+                      MediaQuery.of(context).size.width < 390)
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Education",
-                        style: GoogleFonts.montserrat(
-                          fontSize: 32,
-                          color: primaryColor,
+                      child: TextButton(
+                        onPressed: () {
+                          launchUrlString(project['link']!);
+                        },
+                        child: Text(
+                          "  View Project",
+                          style: GoogleFonts.montserrat(
+                            fontSize: 16,
+                            color: secondaryColor,
+                          ),
                         ),
                       ),
                     ),
-                    const SizedBox(height: 16),
-                    Text(
-                      education['degree']!,
-                      style: GoogleFonts.montserrat(
-                        fontSize: 16,
-                        color: Colors.white.withOpacity(0.8),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      if (MediaQuery.of(context).size.width > 1100)
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Image.asset(
+                            project['image']!,
+                            width: projectImageWidth,
+                            height: projectImageHeight,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Text(
+                          project['description']!,
+                          style: GoogleFonts.montserrat(
+                            fontSize: 16,
+                            color: Colors.white.withOpacity(0.6),
+                          ),
+                        ),
                       ),
-                    ),
-                    Text(
-                      education['university']!,
-                      style: GoogleFonts.montserrat(
-                        fontSize: 16,
-                        color: Colors.white.withOpacity(0.8),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCertificatesSection() {
+    return Container(
+      key: _certificatesKey,
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Achievements & Certificates",
+              style: GoogleFonts.montserrat(
+                fontSize: 32,
+                color: primaryColor,
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+          for (var achievement in achievementsAndCertificates)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 24),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(top: 3),
+                        width: 2,
+                        height: 20,
+                        color: Colors.white.withOpacity(0.2),
                       ),
-                    ),
-                    Text(
-                      education['duration']!,
-                      style: GoogleFonts.montserrat(
-                        fontSize: 16,
-                        color: Colors.white.withOpacity(0.8),
+                      const SizedBox(width: 16),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.6,
+                        child: Text(
+                          achievement['title']!,
+                          style: GoogleFonts.montserrat(
+                            fontSize: 20,
+                            color: Colors.white.withOpacity(0.8),
+                          ),
+                        ),
                       ),
+                      const SizedBox(width: 16),
+                      if (achievement['link'] != null)
+                        Container(
+                          margin: const EdgeInsets.only(top: 3),
+                          width: 2,
+                          height: 20,
+                          color: Colors.white.withOpacity(0.2),
+                        ),
+                      if (achievement['link'] != null)
+                        TextButton(
+                          onPressed: () {
+                            launchUrlString(achievement['link']!);
+                          },
+                          child: Text(
+                            "View",
+                            style: GoogleFonts.montserrat(
+                              fontSize: 16,
+                              color: secondaryColor,
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    achievement['description']!,
+                    style: GoogleFonts.montserrat(
+                      fontSize: 16,
+                      color: Colors.white.withOpacity(0.6),
                     ),
-                  ],
-                ),
-              ],
+                  ),
+                ],
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildEducationSection() {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Education",
+              style: GoogleFonts.montserrat(
+                fontSize: 32,
+                color: primaryColor,
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            education['degree']!,
+            style: GoogleFonts.montserrat(
+              fontSize: 16,
+              color: Colors.white.withOpacity(0.8),
+            ),
+          ),
+          Text(
+            education['university']!,
+            style: GoogleFonts.montserrat(
+              fontSize: 16,
+              color: Colors.white.withOpacity(0.8),
+            ),
+          ),
+          Text(
+            education['duration']!,
+            style: GoogleFonts.montserrat(
+              fontSize: 16,
+              color: Colors.white.withOpacity(0.8),
             ),
           ),
         ],
       ),
-      // ),
     );
   }
 }

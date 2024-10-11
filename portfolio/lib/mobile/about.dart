@@ -1,6 +1,3 @@
-import 'dart:ui';
-
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -18,7 +15,6 @@ class About extends StatelessWidget {
     return Container(
       key: aboutKey,
       padding: const EdgeInsets.all(16),
-      // color: Colors.red,
       child: Column(
         children: [
           Row(
@@ -52,7 +48,6 @@ class About extends StatelessWidget {
                       "About Me",
                       style: GoogleFonts.montserrat(
                         fontSize: 32,
-                        // fontWeight: FontWeight.bold,
                         color: primaryColor,
                       ),
                     ),
@@ -144,7 +139,6 @@ class About extends StatelessWidget {
             ),
           ),
           SizedBox(
-            // width: 400,
             height: 84,
             child: CarouselSlider(
               options: CarouselOptions(
@@ -164,8 +158,6 @@ class About extends StatelessWidget {
                       padding: const EdgeInsets.all(8),
                       child: Chip(
                         backgroundColor: Colors.transparent,
-                        // shadowColor: Colors.white.withOpacity(0.4),
-                        // elevation: 4,
                         avatar: Image.asset(
                           skill['image']!,
                           width: 34,
