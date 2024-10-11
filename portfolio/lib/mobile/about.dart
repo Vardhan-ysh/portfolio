@@ -179,7 +179,7 @@ class About extends StatelessWidget {
               }).toList(),
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           OutlinedButton(
             onPressed: () => launchUrlString(resumeLink),
             child: Text(

@@ -15,7 +15,7 @@ class StaticSection extends StatelessWidget {
         minWidth: 400,
         minHeight: 600,
       ),
-      child: Container(
+      child: SizedBox(
         // color: Colors.blue,
         width: MediaQuery.of(context).size.width * 0.40,
         child: Column(

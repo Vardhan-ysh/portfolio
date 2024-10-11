@@ -70,11 +70,11 @@ class _DesktopViewState extends State<DesktopView> {
                 // platform: TargetPlatform.windows,
               ),
               child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 controller: _scrollController,
                 child: Column(
                   children: [
-                    Container(
+                    SizedBox(
                       width: MediaQuery.of(context).size.width,
                       // height: MediaQuery.of(context).size.height,
                       // constraints: const BoxConstraints(
@@ -107,7 +107,7 @@ class _DesktopViewState extends State<DesktopView> {
                 height: 48,
                 decoration: BoxDecoration(
                   // backgroundBlendMode: BlendMode.xor,
-                  color: Theme.of(context).colorScheme.background,
+                  color: Theme.of(context).colorScheme.surface,
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
                     color: Colors.white.withOpacity(0.2),

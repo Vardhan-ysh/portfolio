@@ -20,7 +20,7 @@ class ScrollableSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 108, left: 48, right: 48),
+      padding: const EdgeInsets.only(top: 108, left: 48, right: 48),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
