@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/common/skills.dart';
 import 'package:portfolio/data/data.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -138,40 +139,42 @@ class About extends StatelessWidget {
               color: Colors.white.withOpacity(0.8),
             ),
           ),
-          SizedBox(
-            height: 84,
-            child: CarouselSlider(
-              options: CarouselOptions(
-                height: 84,
-                autoPlay: true,
-                autoPlayInterval: const Duration(milliseconds: 1600),
-                autoPlayAnimationDuration: const Duration(milliseconds: 1600),
-                enlargeCenterPage: false,
-                aspectRatio: 0.1,
-                viewportFraction: 0.3,
-                pauseAutoPlayOnTouch: false,
-              ),
-              items: skills.map((skill) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: Chip(
-                        backgroundColor: Colors.transparent,
-                        avatar: Image.asset(
-                          skill['image']!,
-                          width: 34,
-                          height: 34,
-                        ),
-                        label: Text(skill['name']!),
-                      ),
-                    );
-                  },
-                );
-              }).toList(),
-            ),
-          ),
-          const SizedBox(height: 16),
+          // SkillsWidget(),
+          // SizedBox(
+          //   height: 84,
+          //   child: CarouselSlider(
+          //     options: CarouselOptions(
+          //       height: 84,
+          //       autoPlay: true,
+          //       autoPlayInterval: const Duration(milliseconds: 1600),
+          //       autoPlayAnimationDuration: const Duration(milliseconds: 1600),
+          //       enlargeCenterPage: false,
+          //       aspectRatio: 0.1,
+          //       viewportFraction: 0.3,
+          //       pauseAutoPlayOnTouch: false,
+          //     ),
+          //     items: skills.map((skill) {
+          //       return Builder(
+          //         builder: (BuildContext context) {
+          //           return Padding(
+          //             padding: const EdgeInsets.all(8),
+          //             child: Chip(
+          //               backgroundColor: Colors.transparent,
+          //               avatar: Image.asset(
+          //                 skill['image']!,
+          //                 width: 34,
+          //                 height: 34,
+          //               ),
+          //               // avatar: Icon(FontAwesomeIcons.code),
+          //               label: Text(skill['name']!),
+          //             ),
+          //           );
+          //         },
+          //       );
+          //     }).toList(),
+          //   ),
+          // ),
+          const SizedBox(height: 22),
           OutlinedButton(
             onPressed: () => launchUrlString(resumeLink),
             child: Text(

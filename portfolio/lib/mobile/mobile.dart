@@ -88,17 +88,19 @@ class _MobileViewState extends State<MobileView> {
         achievementsKey: _certificatesKey,
         certificatesKey: _certificatesKey,
       ),
-      body: ListView(
+      body: SingleChildScrollView(
         controller: _scrollController,
-        children: [
-          About(aboutKey: _aboutKey),
-          const SizedBox(height: 36),
-          _buildExperienceSection(),
-          _buildProjectsSection(),
-          _buildCertificatesSection(),
-          const SizedBox(height: 36),
-          _buildEducationSection(),
-        ],
+        child: Column(
+          children: [
+            About(aboutKey: _aboutKey),
+            const SizedBox(height: 28),
+            _buildExperienceSection(),
+            _buildProjectsSection(),
+            _buildCertificatesSection(),
+            const SizedBox(height: 36),
+            _buildEducationSection(),
+          ],
+        ),
       ),
     );
   }
@@ -425,7 +427,5 @@ class _MobileViewState extends State<MobileView> {
         ],
       ),
     );
-
-    
   }
 }

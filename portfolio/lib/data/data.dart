@@ -78,7 +78,7 @@ const Map<String, String> education = {
 };
 
 const String resumeLink =
-    'https://docs.google.com/document/d/1c5qv75GCsWkQUA5P8IGEwMA1SDHc8Td5/edit?usp=drivesdk&ouid=110193018134732468430&rtpof=true&sd=true';
+    'https://drive.google.com/file/d/1l0GVbZ2N9YfhXJwH63njTrUm0Mbfvuh3/view?usp=drivesdk';
 
 const List<Map<String, String>> achievementsAndCertificates = [
   {
